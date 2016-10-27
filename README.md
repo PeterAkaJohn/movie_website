@@ -6,4 +6,4 @@ I'm using an API to fetch the movies and trailer urls therefore the `requests` m
 
 2. have all the file in the same directory
 
-3. run `python entertainment_center.py`
+3. run `python entertainment_center.py`( about 10 seconds to retrieve all data from api and open the web browser)
