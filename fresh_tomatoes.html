@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+            background-color: #30383B;
+            color: #C2C2C2;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hoverable {
+          transition: box-shadow .55s;
+          box-shadow: 0;
+        }
+
+        .hoverable:hover {
+          transition: box-shadow .60s;
+          box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .hoverable2:hover {
+            background-color: #262626;
+            transition: background-color .60s;
+        }
+
+        .movie-tile {
+            min-height: 35em;
+            padding-top: 20px;
+            background-color: #3B4447;
+            transform: translateZ(0);
+            background: 0 0;
+            transition: all 225ms;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+        .movie-tile:hover {
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+
+        .navbar.navbar-inverse {
+            border: none;
+            border-radius: 0;
+            background-color: #2572DE;
+            background: #2572DE;
+            padding-bottom: 0;
+            margin-bottom: 0;
+            box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .navbar-inverse .navbar-brand {
+            color: white;
+        }
+
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="aoCP_JHzBUM" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//IfB9hy4JH1eH6HEfIgIGORXi5h.jpg" width="220" height="342">
+    <h2>Jack Reacher: Never Go Back</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="2PR9MOPTI7g" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//uM1dNEmcAeyDGjMcFLlkKOyBgft.jpg" width="220" height="342">
+    <h2>Nerve</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="xbNBB1D37U8" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//oFOG2yIRcluKfTtYbzz71Vj9bgz.jpg" width="220" height="342">
+    <h2>Inferno</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="XRVD32rnzOw" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//mLrQMqyZgLeP8FrT5LCobKAiqmK.jpg" width="220" height="342">
+    <h2>Star Trek Beyond</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="LbduDRH2m2M" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//9KQX22BeFzuNM66pBA6JbiaJ7Mi.jpg" width="220" height="342">
+    <h2>Independence Day: Resurgence</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="bvu-zlR5A8Q" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//jjBgi2r5cRt36xF6iNUEhzscEcb.jpg" width="220" height="342">
+    <h2>Jurassic World</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="hEJnMQG9ev8" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//kqjL17yufvn9OVLyXYpvtyrFfak.jpg" width="220" height="342">
+    <h2>Mad Max: Fury Road</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="43NWzay3W4s" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//5N20rQURev5CNDcMjHVUZhpoCNC.jpg" width="220" height="342">
+    <h2>Captain America: Civil War</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="wNAnW6asWEQ" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//jDeDRLEa8JqB3xmKVy6q3bkmDt6.jpg" width="220" height="342">
+    <h2>Sausage Party</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="2LqzF5WauAw" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg" width="220" height="342">
+    <h2>Interstellar</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="C_Tsj_wTJkQ" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//gj282Pniaa78ZJfbaixyLXnXEDI.jpg" width="220" height="342">
+    <h2>The Hunger Games: Mockingjay - Part 1</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="eVSAZv4oqW8" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//z09QAf8WbZncbitewNk6lKYMZsh.jpg" width="220" height="342">
+    <h2>Finding Dory</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="-k4knGRY8jA" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//zSouWWrySXshPCT4t3UKCQGayyo.jpg" width="220" height="342">
+    <h2>X-Men: Apocalypse</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="tV_IhWE4LP0" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//uSHjeRVuObwdpbECaXJnvyDoeJK.jpg" width="220" height="342">
+    <h2>Miss Peregrine's Home for Peculiar Children</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="5AwUdTIbA8I" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//e1mjopzAS2KNsvpbpahQ1a6SkSn.jpg" width="220" height="342">
+    <h2>Suicide Squad</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="QywEmtslLFI" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//dN3KkgXcDkP1QkOZPz5EGXzS8B7.jpg" width="220" height="342">
+    <h2>Ice Age: Collision Course</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="ONHBaC-pfsk" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//inVq3FRqcYIRl2la8iZikYYxFNR.jpg" width="220" height="342">
+    <h2>Deadpool</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="6as8ahAr1Uc" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//cGOPbv9wA5gEejkUN892JrveARt.jpg" width="220" height="342">
+    <h2>Batman v Superman: Dawn of Justice</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="sGbxmsDFVnE" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//weUSwMdQIa3NaXVzwUoIIcAi85d.jpg" width="220" height="342">
+    <h2>Star Wars: The Force Awakens</h2>
+</div>
+
+<div class="col-xs-12 col-sm-6 movie-tile text-center hoverable hoverable2" data-trailer-youtube-id="HSzx-zryEgM" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500//cPaQPtbJkJzuDQ6BxyH9Dg4Fw8r.jpg" width="220" height="342">
+    <h2>Doctor Strange</h2>
+</div>
+
+    </div>
+  </body>
+</html>
